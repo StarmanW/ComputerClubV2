@@ -15,6 +15,7 @@ class Collaborator {
 
     /**
      * @ORM\Id()
+     * @ORM\OneToMany(targetEntity="EventCollaborator", mappedBy="collaborator")
      * @ORM\Column(type="string", name="COLLABID", nullable=false, unique=true, length=10)
      */
     private $collabID;

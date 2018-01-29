@@ -26,7 +26,7 @@ class ProgrammeService extends DB {
         return $programme === null ? 0 : $programme;
     }
 
-    //Method to retrieve all programmes
+    //Method to retrieve all Programmes
     public function getAllProgrammes() {
         return $this->em->getRepository('Programme')->findAll();
     }

@@ -15,6 +15,9 @@ class Event {
     //Data fields
     /**
      * @ORM\Id()
+     * @ORM\OneToMany(targetEntity="EventMember", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="EventItem", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="EventCollaborator", mappedBy="event")
      * @ORM\Column(type="string", name="EVENTID", nullable=false, length=10)
      */
     private $eventID;
@@ -77,7 +80,7 @@ class Event {
     public function getEventTypeString() {
         $eventTypeString = null;
 
-        switch($this->collabType) {
+        switch($this->eventType) {
             case 1:
                 $eventTypeString = "Others";
                 break;

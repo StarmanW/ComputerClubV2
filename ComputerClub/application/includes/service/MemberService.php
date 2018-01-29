@@ -27,7 +27,7 @@ class MemberService extends DB {
         return $member === null ? 0 : $member;
     }
 
-    //Method to retrieve all Faculty
+    //Method to retrieve all Members
     public function getAllMembers() {
         $members = $this->em->getRepository('Member')->findAll();
         return $members === null ? 0 : $members;

@@ -18,10 +18,14 @@ class EventItem {
      */
     private $eventItemID;
     /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="eventID")
+     * @ORM\JoinColumn(name="EVENTID", referencedColumnName="EVENTID")
      * @ORM\Column(type="string", name="EVENTID", length=10, nullable=false)
      */
     private $event;
     /**
+     * @ORM\ManyToOne(targetEntity="Item", inversedBy="itemID")
+     * @ORM\JoinColumn(name="ITEMID", referencedColumnName="ITEMID")
      * @ORM\Column(type="string", name="ITEMID", length=10, nullable=false)
      */
     private $item;

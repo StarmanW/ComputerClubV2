@@ -14,6 +14,7 @@ class Member {
 
     /**
      * @ORM\Id()
+     * @ORM\OneToMany(targetEntity="EventMember", mappedBy="member")
      * @ORM\Column(type="string", name="MEMBERID", nullable=false, length=10)
      */
     private $memberID;

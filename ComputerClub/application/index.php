@@ -1,6 +1,6 @@
 <?php
     $pageTitle = "Login";
-    include "header.php";
+    include "templates/header.php";
 ?>
 <section class="header8 cid-qEC5OqO45Z mbr-fullscreen mbr-parallax-background" id="header8-p" data-rv-view="11520">
     <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(0, 0, 0);">
@@ -33,4 +33,4 @@
     </div>
 </section>
 </section>
-<?php include "footer.php"; ?>
+<?php include "templates/footer.php"; ?>

@@ -5,27 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/title%20bar%20logo.jpg" type="image/x-icon">
     <meta name="description" content="Main login page">
     <title><?php if (isset($pageTitle) and $pageTitle !== null) {
             echo $pageTitle;
         } else {
             echo "Computer Club";
         } ?></title>
-    <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-    <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-    <link rel="stylesheet" href="assets/tether/tether.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="assets/socicon/css/styles.css">
-    <link rel="stylesheet" href="assets/dropdown/css/style.css">
-    <link rel="stylesheet" href="assets/theme/css/style.css">
-    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+    <!-- TODO FIX WEIRD IMPORT DIRECTORY -->
+    <link rel="stylesheet" href="../assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="../assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="../assets/tether/tether.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="../assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="../assets/theme/css/style.css">
+    <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900'
           rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/scrolltotop.css">
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/scrolltotop.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 
 <body>
@@ -34,17 +35,17 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                         <span class="navbar-logo">
-                            <a href="<?php if (preg_match("/^\/ComputerClub\/index\.php\??(empty|invalid)?$/", $_SERVER["REQUEST_URI"])) {
+                            <a href="<?php if (basename($_SERVER["SCRIPT_NAME"]) === 'index.php') {
                                 echo "index.php";
                             } else {
                                 echo "homepage.php";
                             } ?>">
-                                <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true"
+                                <img src="../assets/images/logo-1-3508x2480.jpg" title="" media-simple="true"
                                      style="height: 4.5rem;">
                             </a>
                         </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4"
-                                                     href="<?php if (preg_match("/^\/ComputerClub\/index\.php\??(empty|invalid)?$/", $_SERVER["REQUEST_URI"])) {
+                                                     href="<?php if (basename($_SERVER["SCRIPT_NAME"]) === 'index.php') {
                                                          echo "index.php";
                                                      } else {
                                                          echo "homepage.php";

@@ -26,7 +26,7 @@ class FacultyService extends DB {
         return $faculty === null ? 0 : $faculty;
     }
 
-    //Method to retrieve all Faculty
+    //Method to retrieve all Faculties
     public function getAllFaculties() {
         return $this->em->getRepository('Faculty')->findAll();
     }

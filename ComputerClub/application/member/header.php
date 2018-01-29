@@ -1,3 +1,7 @@
+<?php
+    //TODO: Remove once done
+    //include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClub/application/sessionCheck.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +26,14 @@
     <link rel="stylesheet" href="../assets/datatables/data-tables.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/theme/css/style.css">
     <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
+    <?php if (basename($_SERVER['SCRIPT_NAME']) === 'eventInfo.php'):?>
+    <link rel="stylesheet" href="../assets/css/registerMember.css" type="text/css">
+    <?php elseif (preg_match("/^(collaborator|sponsoredItem|member)List.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
+    <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
+    <?php elseif (basename($_SERVER['SCRIPT_NAME']) === 'eventList.php'):?>
     <link rel="stylesheet" href="../assets/css/editDeleteBtn.css" type="text/css">
-    <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">>
+    <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
+    <?php endif; ?>
 </head>
 
 <body>
@@ -47,10 +57,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">LIST</a>
-                    <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS LIST</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS LIST</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS LIST</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS LIST</a></div>
+                    <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.php">MEMBERS LIST</a><a class="dropdown-item text-white display-4" href="eventList.php">EVENTS LIST</a><a class="dropdown-item text-white display-4" href="collaboratorList.php">COLLABORATORS LIST</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.php">SPONSORED ITEMS LIST</a></div>
                 </li>
             </ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="../index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="../index.php"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
 
                     LOGOUT</a></div>
         </div>

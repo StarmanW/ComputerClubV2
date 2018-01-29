@@ -13,6 +13,7 @@ class Item {
 
     /**
      * @ORM\Id()
+     * @ORM\OneToMany(targetEntity="EventItem", mappedBy="item")
      * @ORM\Column(type="string", name="ITEMID", nullable=false, length=10)
      */
     private $itemID;
@@ -65,7 +66,7 @@ class Item {
     public function getItemTypeString() {
         $itemTypeString = null;
 
-        switch ($this->collabType) {
+        switch ($this->itemType) {
             case 1:
                 $itemTypeString = "Others";
                 break;

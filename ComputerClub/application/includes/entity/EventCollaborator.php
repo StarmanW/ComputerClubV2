@@ -18,10 +18,14 @@ class EventCollaborator {
      */
     private $eventCollabID;
     /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="eventID")
+     * @ORM\JoinColumn(name="EVENTID", referencedColumnName="EVENTID")
      * @ORM\Column(type="string", name="EVENTID", length=10, nullable=false)
      */
     private $event;
     /**
+     * @ORM\ManyToOne(targetEntity="Collaborator", inversedBy="collabID")
+     * @ORM\JoinColumn(name="COLLABID", referencedColumnName="COLLABID")
      * @ORM\Column(type="string", name="COLLABID", length=10, nullable=false)
      */
     private $collaborator;

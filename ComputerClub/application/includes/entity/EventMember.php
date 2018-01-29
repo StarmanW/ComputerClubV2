@@ -12,16 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
 
 class EventMember {
 
-    //Data fields
     /**
      * @ORM\Column(type="string", name="EVENTMEMBERID", length=10, nullable=false)
      */
     private $eventMemberID;
     /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="eventID")
+     * @ORM\JoinColumn(name="EVENTID", referencedColumnName="EVENTID")
      * @ORM\Column(type="string", name="EVENTID", length=10, nullable=false)
      */
     private $event;
     /**
+     * @ORM\ManyToOne(targetEntity="Member", inversedBy="memberID")
+     * @ORM\JoinColumn(name="MEMBERID", referencedColumnName="MEMBERID")
      * @ORM\Column(type="string", name="MEMBERID", length=10, nullable=false)
      */
     private $member;
