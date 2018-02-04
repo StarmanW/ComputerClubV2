@@ -2,16 +2,18 @@
 /**
  * User: StarmanW
  * Date: 05-Feb-18
- * Time: 12:33 AM
+ * Time: 1:55 AM
  */
 
-require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Event.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Item.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Collaborator.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventItem.php';
 
-class EventItemService extends DB {
+require_once 'DB.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Programme.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Member.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Faculty.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Event.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventMember.php';
+
+class EventMemberService extends DB {
 
     //Constructor method
     public function __construct() {
@@ -19,19 +21,19 @@ class EventItemService extends DB {
     }
 
     //Method to retrieve a specific event collaborator by event ID
-    public function getItemsByEventID($eventID) {
-        $eventCollab = $this->em->getRepository(Entity\EventItem::class)->findBy(array('event' => $eventID));
+    public function getMembersByEventID($eventID) {
+        $eventCollab = $this->em->getRepository(Entity\EventMember::class)->findBy(array('event' => $eventID));
         return $eventCollab === null ? 0 : $eventCollab;
     }
 
     //Method to retrieve all Event Collaborators
     public function getAllRecords() {
-        $eventCollabs = $this->em->getRepository(Entity\EventItem::class)->findAll();
+        $eventCollabs = $this->em->getRepository(Entity\EventMember::class)->findAll();
         return $eventCollabs === null ? 0 : $eventCollabs;
     }
 
     //Method to add new event collaborator record
-    public function addEventItem($eventCollab) {
+    public function addEventMember($eventCollab) {
         $successInsert = false;
 
         try {
@@ -47,7 +49,7 @@ class EventItemService extends DB {
     }
 
     //Method to update event collaborator record
-    public function updateEventItem($eventCollab) {
+    public function updateEventMember($eventCollab) {
         $successUpdate = false;
 
         try {
@@ -63,7 +65,7 @@ class EventItemService extends DB {
     }
 
     //Method to delete event collaborator record
-    public function deleteEventItem($eventCollab) {
+    public function deleteEventMember($eventCollab) {
         $successDelete = false;
 
         try {

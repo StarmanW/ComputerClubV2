@@ -1,9 +1,9 @@
 <?php
-$pageTitle = "Participant List for " . $_GET['e'];
-include "../templates/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClub/application/includes/service/EventParticipantService.php";
-//$eventCollabs = new EventCollaboratorService();
-//$eventCollabs = $eventCollabs->getCollabByEventID($_GET['e']);
+    $pageTitle = "Participant List for " . $_GET['e'];
+    include "../templates/header.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/EventMemberService.php";
+    $eventMembers = new EventMemberService();
+    $eventMembers = $eventMembers->getMembersByEventID($_GET['e']);
 ?>
 <section class="section-table cid-qEC8mwEb5q mbr-parallax-background" id="table1-t" data-rv-view="4052">
     <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
@@ -36,15 +36,16 @@ include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClub/application/includes/service/
                         </tr>
                         </thead>
                         <tbody>
-<!--                        --><?php //for ($i = 0; $i < sizeof($eventCollabs); $i++): ?>
-<!--                            <tr>-->
-<!--                                <td class="body-item mbr-fonts-style display-7">--><?php //echo $eventCollabs[$i]->getCollaborator()->getCollabID(); ?><!--</td>-->
-<!--                                <td class="body-item mbr-fonts-style display-7">--><?php //echo $eventCollabs[$i]->getCollaborator()->getCollabName(); ?><!--</td>-->
-<!--                                <td class="body-item mbr-fonts-style display-7">--><?php //echo $eventCollabs[$i]->getCollaborator()->getCollabTypeString(); ?><!--</td>-->
-<!--                                <td class="body-item mbr-fonts-style display-7">--><?php //echo $eventCollabs[$i]->getCollaborator()->getCollabContact(); ?><!--</td>-->
-<!--                                <td class="body-item mbr-fonts-style display-7">--><?php //echo $eventCollabs[$i]->getCollaborator()->getCollabEmail(); ?><!--</td>-->
-<!--                            </tr>-->
-<!--                        --><?php //endfor; ?>
+                        <?php for ($i = 0; $i < sizeof($eventMembers); $i++): ?>
+                            <tr>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $eventMembers[$i]->getMember()->getFirstName() . ' ' . $eventMembers[$i]->getMember()->getLastName(); ?></td>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $eventMembers[$i]->getMember()->getMemberID(); ?></td>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $eventMembers[$i]->getMember()->getPositionString(); ?></td>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $eventMembers[$i]->getMember()->getGender(); ?></td>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $eventMembers[$i]->getMember()->getAcademicYear(); ?></td>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $eventMembers[$i]->getMember()->getProgramme()->getProgID(); ?></td>
+                            </tr>
+                        <?php endfor; ?>
                         </tbody>
                     </table>
                 </div>

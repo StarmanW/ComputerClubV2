@@ -16,7 +16,7 @@
     </title>
 
     <!-- TODO FIX WEIRD IMPORT DIRECTORY -->
-    <link rel="stylesheet" href="../../assets/web/../assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="../assets/web/../assets/mobirise-icons-bold/mobirise-icons-bold.css">
     <link rel="stylesheet" href="../assets/tether/tether.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-grid.min.css">
