@@ -18,12 +18,6 @@ class EventService extends DB {
         parent::__construct();
     }
 
-    //Method to find event
-    private function getEvent($eventID) {
-        $eventExist = $this->em->getRepository(Entity\Event::class)->findOneBy(array('eventID' => $eventID));
-        return $eventExist === null ? 0 : 1;
-    }
-
     //Method to retrieve a specific event
     public function getEventByID($eventID) {
         $eventID = $this->em->getRepository(Entity\Event::class)->findOneBy(array('eventID' => $eventID));
@@ -40,7 +34,7 @@ class EventService extends DB {
     public function createEvent($event) {
         $successInsert = false;
 
-        if ($this->getEvent($event->getEventID())) {
+        if ($this->getEvent($event->getEventID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {

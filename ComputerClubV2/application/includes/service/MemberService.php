@@ -17,12 +17,6 @@ class MemberService extends DB {
         parent::__construct();
     }
 
-    //Method to find member
-    private function getMember($memberID) {
-        $memberExist = $this->em->getRepository(Entity\Member::class)->findOneBy(array('memberID' => $memberID));
-        return $memberExist === null ? 0 : 1;
-    }
-
     //Method to retrieve a specific member
     public function getMemberByID($memberID) {
         $member = $this->em->getRepository(Entity\Member::class)->findOneBy(array('memberID' => $memberID));
@@ -39,7 +33,7 @@ class MemberService extends DB {
     public function createMember($member) {
         $successInsert = false;
 
-        if ($this->getMember($member->getMemberID())) {
+        if ($this->getMemberByID($member->getMemberID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {
@@ -59,7 +53,7 @@ class MemberService extends DB {
     public function updateMember($member) {
         $successUpdate = false;
 
-        if ($this->getMember($member->getMemberID())) {
+        if ($this->getMemberByID($member->getMemberID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->merge($member);
@@ -82,7 +76,7 @@ class MemberService extends DB {
     public function deleteMember($memberID) {
         $successDelete = false;
 
-        if ($this->getMember($member->getMemberID())) {
+        if ($this->getMemberByID($member->getMemberID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->remove($member);

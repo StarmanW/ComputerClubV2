@@ -15,12 +15,6 @@ class ProgrammeService extends DB {
         parent::__construct();
     }
 
-    //Method to find programme
-    private function getProgramme($progID) {
-        $progExist = $this->em->getRepository(Entity\Programme::class)->findOneBy(array('progID' => $progID));
-        return $progExist === null ? 0 : 1;
-    }
-
     //Method to retrieve a specific programme
     public function getProgrammeByID($progID) {
         $programme = $this->em->getRepository(Entity\Programme::class)->findOneBy(array('progID' => $progID));
@@ -36,7 +30,7 @@ class ProgrammeService extends DB {
     public function createProgramme($programme) {
         $successInsert = false;
 
-        if ($this->getProgramme($programme->getProgID())) {
+        if ($this->getProgrammeByID($programme->getProgID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {
@@ -56,7 +50,7 @@ class ProgrammeService extends DB {
     public function updateProgramme($programme) {
         $successUpdate = false;
 
-        if ($this->getProgramme($programme->getProgID())) {
+        if ($this->getProgrammeByID($programme->getProgID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->merge($programme);
@@ -68,5 +62,23 @@ class ProgrammeService extends DB {
             }
         }
         return $successUpdate;
+    }
+
+    //Method to delete programme
+    public function deleteProgramme($programme) {
+        $successDelete = false;
+
+        if ($this->getProgrammeByID($programme->getProgID()) !== 0) {
+            try {
+                $this->em->beginTransaction();
+                $this->em->remove($programme);
+                $this->em->commit();
+                $this->em->flush();
+                $successDelete = true;
+            } catch (Exception $e) {
+                $this->em->rollback();
+            }
+        }
+        return $successDelete;
     }
 }

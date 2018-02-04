@@ -57,7 +57,7 @@
         </div>
     </div>
 </section>
-<script src="../assets/web/assets/jquery/jquery.min.js"></script>
+<script src="../assets/web/../assets/jquery/jquery.min.js"></script>
 <script src="../assets/popper/popper.min.js"></script>
 <script src="../assets/tether/tether.min.js"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
@@ -65,7 +65,7 @@
 <script src="../assets/smoothscroll/smooth-scroll.js"></script>
 <script src="../assets/dropdown/js/script.min.js"></script>
 <script src="../assets/theme/js/script.js"></script>
-<script src="assets/scrolltotop/scrolltotop.js"></script>
+<script src="../assets/scrolltotop/scrolltotop.js"></script>
 <script src="../assets/datatables/jquery.data-tables.min.js"></script>
 <script src="../assets/datatables/data-tables.bootstrap4.min.js"></script>
 <?php if (basename($_SERVER['SCRIPT_NAME']) === 'index.php'):?>

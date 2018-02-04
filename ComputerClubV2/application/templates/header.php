@@ -1,3 +1,4 @@
+<?php //include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/sessionCheck.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,11 @@
             echo $pageTitle;
         } else {
             echo "Computer Club";
-        } ?></title>
+        } ?>
+    </title>
+
     <!-- TODO FIX WEIRD IMPORT DIRECTORY -->
-    <link rel="stylesheet" href="../assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="../../assets/web/../assets/mobirise-icons-bold/mobirise-icons-bold.css">
     <link rel="stylesheet" href="../assets/tether/tether.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-grid.min.css">
@@ -25,13 +28,15 @@
     <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
     <?php if (basename($_SERVER['SCRIPT_NAME']) === 'eventInfo.php'):?>
         <link rel="stylesheet" href="../assets/css/registerMember.css" type="text/css">
+    <?php elseif (preg_match("/^index.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
+        <link rel="stylesheet" href="../assets/css/login.css" type="text/css">
     <?php elseif (preg_match("/^(collaborator|sponsoredItem|member)List.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-        <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
-    <?php elseif (preg_match("/^(eventList|listEventCollaborators|listEventParticipants|listEventSponsoredItems).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-        <link rel="stylesheet" href="../assets/css/editDeleteBtn.css" type="text/css">
         <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
     <?php elseif (preg_match("/^homepage.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
         <link rel="stylesheet" href="../assets/css/hoverImage.css" type="text/css">
+    <?php elseif (preg_match("/^(eventList|listEventCollaborators|listEventParticipants|listEventSponsoredItems).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
+        <link rel="stylesheet" href="../assets/css/editDeleteBtn.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
     <?php endif; ?>
 </head>
 

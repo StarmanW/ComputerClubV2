@@ -16,12 +16,6 @@ class ItemService extends DB {
         parent::__construct();
     }
 
-    //Method to find item
-    private function getItem($itemID) {
-        $itemExist = $this->em->getRepository(Entity\Item::class)->findOneBy(array('itemID' => $itemID));
-        return $itemExist === null ? 0 : 1;
-    }
-
     //Method to retrieve a specific item
     public function getItemByID($itemID) {
         $itemID = $this->em->getRepository(Entity\Item::class)->findOneBy(array('itemID' => $itemID));
@@ -38,7 +32,7 @@ class ItemService extends DB {
     public function createItem($item) {
         $successInsert = false;
 
-        if ($this->getItem($item->getItemID())) {
+        if ($this->getItemByID($item->getItemID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {
@@ -58,7 +52,7 @@ class ItemService extends DB {
     public function updateItem($item) {
         $successUpdate = false;
 
-        if ($this->getItem($item->getItemID())) {
+        if ($this->getItemByID($item->getItemID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->merge($item);
@@ -76,7 +70,7 @@ class ItemService extends DB {
     public function deleteItem($item) {
         $successDelete = false;
 
-        if ($this->getItem($item->getItemID())) {
+        if ($this->getItemByID($item->getItemID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->remove($item);

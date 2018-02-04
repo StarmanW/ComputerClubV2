@@ -15,12 +15,6 @@ class CollaboratorService extends DB {
         parent::__construct();
     }
 
-    //Method to find collaborator
-    private function getCollaborator($collabID) {
-        $collabExist = $this->em->getRepository(Entity\Collaborator::class)->findOneBy(array('collabID' => $collabID));
-        return $collabExist === null ? 0 : 1;
-    }
-
     //Method to retrieve a specific collaborator
     public function getCollaboratorByID($collabID) {
         $collabID = $this->em->getRepository(Entity\Collaborator::class)->findOneBy(array('collabID' => $collabID));
@@ -37,7 +31,7 @@ class CollaboratorService extends DB {
     public function createCollaborator($collab) {
         $successInsert = false;
 
-        if ($this->getCollaborator($collab->getCollaboratorID())) {
+        if ($this->getCollaboratorByID($collab->getCollaboratorID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {
@@ -57,7 +51,7 @@ class CollaboratorService extends DB {
     public function updateCollaborator($collab) {
         $successUpdate = false;
 
-        if ($this->getCollaborator($collab->getCollaboratorID())) {
+        if ($this->getCollaboratorByID($collab->getCollaboratorID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->merge($collab);
@@ -75,7 +69,7 @@ class CollaboratorService extends DB {
     public function deleteCollaborator($collab) {
         $successDelete = false;
 
-        if ($this->getCollaborator($collab->getCollaboratorID())) {
+        if ($this->getCollaboratorByID($collab->getCollaboratorID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->remove($collab);

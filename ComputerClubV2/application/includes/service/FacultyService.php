@@ -15,12 +15,6 @@ class FacultyService extends DB {
         parent::__construct();
     }
 
-    //Method to find faculty
-    private function getFaculty($facultyID) {
-        $facultyExist = $this->em->getRepository(Entity\Faculty::class)->findOneBy(array('facultyID' => $facultyID));
-        return $facultyExist === null ? 0 : 1;
-    }
-
     //Method to retrieve a specific faculty
     public function getFacultyByID($facultyID) {
         $faculty = $this->em->getRepository(Entity\Faculty::class)->findOneBy(array('facultyID' => $facultyID));
@@ -36,7 +30,7 @@ class FacultyService extends DB {
     public function createFaculty($faculty) {
         $successInsert = false;
 
-        if ($this->getFaculty($faculty->getFacultyID())) {
+        if ($this->getFacultyByID($faculty->getFacultyID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {
@@ -56,7 +50,7 @@ class FacultyService extends DB {
     public function updateFaculty($faculty) {
         $successUpdate = false;
 
-        if ($this->getFaculty($faculty->getFacultyID())) {
+        if ($this->getFacultyByID($faculty->getFacultyID()) !== 0) {
             try {
                 $this->em->beginTransaction();
                 $this->em->merge($faculty);
@@ -68,5 +62,23 @@ class FacultyService extends DB {
             }
         }
         return $successUpdate;
+    }
+
+    //Method to delete event
+    public function deleteEvent($faculty) {
+        $successDelete = false;
+
+        if ($this->getFacultyByID($faculty->getFacultyID()) !== 0) {
+            try {
+                $this->em->beginTransaction();
+                $this->em->remove($faculty);
+                $this->em->commit();
+                $this->em->flush();
+                $successDelete = true;
+            } catch (Exception $e) {
+                $this->em->rollback();
+            }
+        }
+        return $successDelete;
     }
 }
