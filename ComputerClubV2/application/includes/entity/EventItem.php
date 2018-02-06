@@ -31,14 +31,6 @@ class EventItem {
      */
     private $item;
 
-    /**
-     * EventItem constructor.
-     */
-    public function __construct() {
-        $this->event = new ArrayCollection();
-        $this->item = new ArrayCollection();
-    }
-
     //Getters
     public function getEventItemID() {
         return $this->eventItemID;

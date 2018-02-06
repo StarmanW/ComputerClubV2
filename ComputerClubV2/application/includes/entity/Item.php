@@ -46,7 +46,7 @@ class Item {
      * Item constructor.
      */
     public function __construct() {
-        $this->collaborator = new ArrayCollection();
+        $this->itemID = new ArrayCollection();
     }
 
     //Getters

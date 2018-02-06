@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class EventMember {
 
     /**
+     * @ORM\Id()
      * @ORM\Column(type="string", name="EVENTMEMBERID", length=10, nullable=false)
      */
     private $eventMemberID;
@@ -29,14 +30,6 @@ class EventMember {
      * @ORM\JoinColumn(name="MEMBERID", referencedColumnName="MEMBERID")
      */
     private $member;
-
-    /**
-     * EventMember constructor.
-     */
-    public function __construct() {
-        $this->event = new ArrayCollection();
-        $this->member = new ArrayCollection();
-    }
 
     //Getters
     public function getEventMemberID() {

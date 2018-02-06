@@ -20,6 +20,7 @@ class MemberService extends DB {
     //Method to retrieve a specific member
     public function getMemberByID($memberID) {
         $member = $this->em->getRepository(Entity\Member::class)->findOneBy(array('memberID' => $memberID));
+        $this->em->clear();
         return $member === null ? 0 : $member;
     }
 
@@ -38,7 +39,7 @@ class MemberService extends DB {
         } else {
             try {
                 $this->em->beginTransaction();
-                $this->em->persist($member);
+                $this->em->merge($member);
                 $this->em->commit();
                 $this->em->flush();
                 $successInsert = true;
@@ -67,28 +68,28 @@ class MemberService extends DB {
         return $successUpdate;
     }
 
-/*
- * This method is for demo purpose, it is never used on this
- * project. This method performs deletion of a specific member
- * record from database.
- *
-    //Method to delete member
-    public function deleteMember($memberID) {
-        $successDelete = false;
+    /*
+     * This method is for demo purpose, it is never used on this
+     * project. This method performs deletion of a specific member
+     * record from database.
+     *
+        //Method to delete member
+        public function deleteMember($memberID) {
+            $successDelete = false;
 
-        if ($this->getMemberByID($member->getMemberID()) !== 0) {
-            try {
-                $this->em->beginTransaction();
-                $this->em->remove($member);
-                $this->em->commit();
-                $this->em->flush();
-                $successDelete = true;
-            } catch (Exception $e) {
-                $this->em->rollback();
+            if ($this->getMemberByID($member->getMemberID()) !== 0) {
+                try {
+                    $this->em->beginTransaction();
+                    $this->em->remove($member);
+                    $this->em->commit();
+                    $this->em->flush();
+                    $successDelete = true;
+                } catch (Exception $e) {
+                    $this->em->rollback();
+                }
             }
-        }
 
-        return $successDelete;
-    }
-*/
+            return $successDelete;
+        }
+    */
 }

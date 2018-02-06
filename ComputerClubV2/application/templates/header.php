@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="../assets/images/title%20bar%20logo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="/ComputerClubV2/application/assets/images/title%20bar%20logo.jpg" type="image/x-icon">
     <meta name="description" content="Main login page">
     <title><?php if (isset($pageTitle) and $pageTitle !== null) {
             echo $pageTitle;
@@ -16,27 +16,25 @@
     </title>
 
     <!-- TODO FIX WEIRD IMPORT DIRECTORY -->
-    <link rel="stylesheet" href="../assets/web/../assets/mobirise-icons-bold/mobirise-icons-bold.css">
-    <link rel="stylesheet" href="../assets/tether/tether.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../assets/socicon/css/styles.css">
-    <link rel="stylesheet" href="../assets/dropdown/css/style.css">
-    <link rel="stylesheet" href="../assets/datatables/data-tables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/theme/css/style.css">
-    <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
-    <?php if (basename($_SERVER['SCRIPT_NAME']) === 'eventInfo.php'):?>
-        <link rel="stylesheet" href="../assets/css/registerMember.css" type="text/css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/datatables/data-tables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/theme/css/style.css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/mobirise/css/mbr-additional.css" type="text/css">
+    <?php if (preg_match("/^(eventInfo|registerMember|registerEvent|registerCollaborator|registerSponsoredItem).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/registerForm.css" type="text/css">
     <?php elseif (preg_match("/^index.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-        <link rel="stylesheet" href="../assets/css/login.css" type="text/css">
-    <?php elseif (preg_match("/^(collaborator|sponsoredItem|member)List.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-        <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/login.css" type="text/css">
     <?php elseif (preg_match("/^homepage.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-        <link rel="stylesheet" href="../assets/css/hoverImage.css" type="text/css">
-    <?php elseif (preg_match("/^(eventList|listEventCollaborators|listEventParticipants|listEventSponsoredItems).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-        <link rel="stylesheet" href="../assets/css/editDeleteBtn.css" type="text/css">
-        <link rel="stylesheet" href="../assets/css/lists.css" type="text/css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/hoverImage.css" type="text/css">
+    <?php elseif (preg_match("/^(collaboratorList|sponsoredItemList|memberList|eventList|listEventCollaborators|listEventParticipants|listEventSponsoredItems).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/editDeleteBtn.css" type="text/css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/lists.css" type="text/css">
     <?php endif; ?>
 </head>
 
@@ -51,21 +49,23 @@
                             } else {
                                 echo "homepage.php";
                             } ?>">
-                                <img src="../assets/images/logo-1-3508x2480.jpg" title="" media-simple="true"
-                                     style="height: 4.5rem;">
+                                <img src="/ComputerClubV2/application/assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
                             </a>
                         </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4"
-                                                     href="<?php if (basename($_SERVER["SCRIPT_NAME"]) === 'index.php') {
-                                                         echo "index.php";
-                                                     } else {
-                                                         echo "homepage.php";
-                                                     } ?>">
-                                COMPUTER CLUB</a></span>
+                <span class="navbar-caption-wrap">
+                    <a class="navbar-caption text-white display-4" href="
+                        <?php if (basename($_SERVER["SCRIPT_NAME"]) === 'index.php') {
+                             echo "index.php";
+                         } else {
+                             echo "homepage.php";
+                         } ?>">
+                        COMPUTER CLUB
+                    </a>
+                </span>
             </div>
         </div>
 
-        <?php if (isset($_SESSION['loggedIn']) and $_SESSION['loggedIn'] === true):?>
+        <?php if (isset($_SESSION['isMember']) and $_SESSION['isMember'] === true):?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">LIST</a>

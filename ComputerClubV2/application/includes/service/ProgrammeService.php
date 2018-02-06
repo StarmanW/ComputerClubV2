@@ -5,8 +5,8 @@
  * Time: 8:39 PM
  */
 require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . 'ComputerClubV2/application/includes/entity/Faculty.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . 'ComputerClubV2/application/includes/entity/Programme.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Faculty.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Programme.php';
 
 class ProgrammeService extends DB {
 

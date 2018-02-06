@@ -31,14 +31,6 @@ class EventCollaborator {
      */
     private $collaborator;
 
-    /**
-     * EventCollaborator constructor.
-     */
-    public function __construct() {
-        $this->event = new ArrayCollection();
-        $this->collaborator = new ArrayCollection();
-    }
-
     //Getters
     public function getEventCollabID() {
         return $this->eventCollabID;

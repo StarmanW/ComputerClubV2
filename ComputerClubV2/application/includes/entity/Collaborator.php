@@ -2,6 +2,7 @@
 
 namespace Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,13 +46,8 @@ class Collaborator {
     /**
      * Collaborator constructor.
      */
-    public function __construct($collabID, $collabName, $collabType, $collabContact, $collabEmail, $additionalNotes) {
-        $this->collabID = $collabID;
-        $this->collabName = $collabName;
-        $this->collabType = $collabType;
-        $this->collabContact = $collabContact;
-        $this->collabEmail = $collabEmail;
-        $this->additionalNotes = $additionalNotes;
+    public function __construct() {
+        $this->collabID = new ArrayCollection();
     }
 
     //Getters

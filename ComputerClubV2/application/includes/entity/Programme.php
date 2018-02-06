@@ -35,7 +35,7 @@ class Programme {
      * Programme constructor.
      */
     public function __construct() {
-        $this->faculty = new ArrayCollection();
+        $this->progID = new ArrayCollection();
     }
 
     //Getters

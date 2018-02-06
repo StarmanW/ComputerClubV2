@@ -2,6 +2,7 @@
 
 namespace Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -54,15 +55,8 @@ class Event {
     /**
      * Event constructor.
      */
-    public function __construct($eventID, $eventName, $eventType, $eventDate, $eventStartTime, $eventEndTime, $eventLocation, $eventDesc) {
-        $this->eventID = $eventID;
-        $this->eventName = $eventName;
-        $this->eventType = $eventType;
-        $this->eventDate = $eventDate;
-        $this->eventStartTime = $eventStartTime;
-        $this->eventEndTime = $eventEndTime;
-        $this->eventLocation = $eventLocation;
-        $this->eventDesc = $eventDesc;
+    public function __construct() {
+        $this->eventID = new ArrayCollection();
     }
 
     //Getters

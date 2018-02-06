@@ -2,6 +2,7 @@
 
 namespace Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,9 +28,8 @@ class Faculty {
     /**
      * Faculty constructor.
      */
-    public function __construct($facultyID, $facultyName) {
-        $this->facultyID = $facultyID;
-        $this->facultyName = $facultyName;
+    public function __construct() {
+        $this->facultyID = new ArrayCollection();
     }
 
     //Getters

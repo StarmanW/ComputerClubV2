@@ -71,7 +71,7 @@ class Member {
      * Member constructor.
      */
     public function __construct() {
-        $this->programme = new ArrayCollection();
+        $this->memberID = new ArrayCollection();
     }
 
     //Getters
@@ -108,7 +108,11 @@ class Member {
     }
 
     public function getFeeStatus() {
-        return $this->feeStatus;
+        if ($this->feeStatus === true) {
+            return "Paid";
+        } else {
+            return "Pending";
+        }
     }
 
     public function getPosition() {
