@@ -1,6 +1,6 @@
 <?php
     $pageTitle = "Register Member";
-    include "../../templates/header.php";
+    include "../templates/header.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/MemberService.php";
     $programmeService = new ProgrammeService();
@@ -17,7 +17,7 @@
             <hr style="border-top:1px solid gray;" />
             <div class="col-lg-12 well">
                 <div class="row">
-                    <form method="post" action="../../includes/controller/updateMember.php">
+                    <form method="post" action="../includes/controller/updateMember.php">
                         <p style="color:red; float: left;">"*" Required fields</p>
                         <br />
                         <br />
@@ -124,16 +124,16 @@
         </div>
     </div>
 </section>
-<script src="../../assets/js/upperCase.js"></script>
+<script src="../assets/js/upperCase.js"></script>
 <?php
-    if (isset($_SESSION['$updtMemStatus']) and $_SESSION['$updtMemStatus'] === 1) {
+    if (isset($_SESSION['updtMemStatus']) and $_SESSION['updtMemStatus'] === 1) {
         echo "<script>" . "window.alert('Member details successfully updated!')" . "</script>";
-    } else if (isset($_SESSION['$updtMemStatus']) and $_SESSION['$updtMemStatus'] === 0) {
+    } else if (isset($_SESSION['updtMemStatus']) and $_SESSION['updtMemStatus'] === 0) {
         echo "<script>" . "window.alert('Oh no! An error has occurred, please contact the system administrator.')" . "</script>";
     }
-    unset($_SESSION['$updtMemStatus']);
+    unset($_SESSION['updtMemStatus']);
     unset($_SESSION['updtMemData']);
     unset($_SESSION['emptyMemMsg']);
     unset($_SESSION['invalidMemMsg']);
-    include "../../templates/footer.php";
+    include "../templates/footer.php";
 ?>

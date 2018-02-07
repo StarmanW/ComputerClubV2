@@ -12,6 +12,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/utilit
 
 //TODO - Add login session check once finished
 if (isset($_POST['submitUpdtMem'])) {
+    session_name("xg-ai");
     session_start();
 
     //Get all data and set it into a session
@@ -51,16 +52,15 @@ if (isset($_POST['submitUpdtMem'])) {
         $member->setGender($_SESSION['updtMemData']['gender']);
         $member->setFeeStatus($_SESSION['updtMemData']['memFeeStats']);
         $member->setPosition($_SESSION['updtMemData']['position']);
-        $member->setPassword($passHandler->hashPass($_SESSION['updtMemData']['icNum']));
 
         //Persist updated member object
         $updtMemStatus = $memberService->updateMember($member);
         if ($updtMemStatus === true) {
-            $_SESSION['$updtMemStatus'] = 1;
+            $_SESSION['updtMemStatus'] = 1;
         } elseif ($updtMemStatus === false) {
-            $_SESSION['$updtMemStatus'] = 0;
+            $_SESSION['updtMemStatus'] = 0;
         }
-        header("Location: ../../admin/member/updateMember.php?studID=".$member->getMemberID());
+        header("Location: ../../admin/updateMember.php?studID=".$member->getMemberID());
     }
 } else {
     header("Location: ../../index.php");

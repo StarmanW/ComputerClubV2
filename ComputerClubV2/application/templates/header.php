@@ -1,7 +1,10 @@
 <?php
     //TODO - Remove once finished
-    //include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/sessionCheck.php';
-    session_start();
+    if (!preg_match("/^index.php$/", basename($_SERVER['SCRIPT_NAME']))) {
+        //include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/sessionCheck.php';
+        session_name("xg-ai");
+        session_start();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,18 +69,21 @@
             </div>
         </div>
 
-        <?php if (isset($_SESSION['isMember']) and $_SESSION['isMember'] === true):?>
+        <?php if (isset($_SESSION['uRights']) and $_SESSION['uRights'] === 0):?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">LIST</a>
                     <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.php">MEMBERS LIST</a><a class="dropdown-item text-white display-4" href="eventList.php">EVENTS LIST</a><a class="dropdown-item text-white display-4" href="collaboratorList.php">COLLABORATORS LIST</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.php">SPONSORED ITEMS LIST</a></div>
                 </li>
             </ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="../index.php"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
-
-                    LOGOUT</a></div>
+            <div class="navbar-buttons mbr-section-btn">
+                <a class="btn btn-sm btn-primary display-4" href="../includes/controller/logout.php">
+                    <span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+                    LOGOUT
+                </a>
+            </div>
         </div>
-        <?php elseif (isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true):?>
+        <?php elseif (isset($_SESSION['uRights']) and $_SESSION['uRights'] === 1):?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item dropdown open"><a class="nav-link link text-white dropdown-toggle display-4" aria-expanded="true" data-toggle="dropdown-submenu">REGISTER</a>
@@ -87,9 +93,14 @@
                     <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.php">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.php">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.php">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.php">SPONSORED ITEMS</a></div>
                 </li>
             </ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.php"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
-
-                    LOGOUT</a></div>
+            <div class="navbar-buttons mbr-section-btn">
+                <form method="POST" action="../includes/controller/logout.php">
+                    <button type="submit" class="btn btn-sm btn-primary display-4">
+                        <span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+                        LOGOUT
+                    </button>
+                </form>
+            </div>
         </div>
         <?php endif; ?>
     </nav>

@@ -1,6 +1,14 @@
 <?php
-    $pageTitle = "Login";
-    include "templates/header.php";
+    session_name("xg-ai");
+    session_start();
+    if (isset($_SESSION['loggedIn']) and isset($_SESSION['uRights']) and $_SESSION['uRights'] === 0) {
+        header("Location: member/homepage.php");
+    } elseif (isset($_SESSION['loggedIn']) and isset($_SESSION['uRights']) and $_SESSION['uRights'] === 1) {
+        header("Location: admin/homepage.php");
+    } else {
+        $pageTitle = "Login";
+        include "templates/header.php";
+    }
 ?>
 <section class="header8 cid-qEC5OqO45Z mbr-fullscreen mbr-parallax-background" id="header8-p" data-rv-view="11520">
     <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(0, 0, 0);">
@@ -18,19 +26,19 @@
                 }
             ?>
             <form method="POST" action="includes/controller/login.php">
-                <label for="username">Username</label>
+                <label for="userID">User ID</label>
                 <br/>
-                <input type="text" name="username" id="username">
+                <input type="text" name="userID" id="userID" onkeyup="userIDUpperCase();">
                 <br/>
                 <label for="password">Password</label>
                 <br/>
                 <input type="password" name="password" id="password">
                 <br/>
-                <button type="submit" name="login">Login</button>
+                <button type="submit" name="submitLgn">Login</button>
                 <br/>
             </form>
         </div>
     </div>
 </section>
-</section>
+<script src="assets/js/upperCase.js"></script>
 <?php include "templates/footer.php"; ?>

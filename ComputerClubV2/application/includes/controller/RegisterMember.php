@@ -12,6 +12,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/utilit
 
 //TODO - Add login session check once finished
 if (isset($_POST['submitRegMem'])) {
+    session_name("xg-ai");
     session_start();
 
     //Get all data and set it into a session
@@ -62,7 +63,7 @@ if (isset($_POST['submitRegMem'])) {
         } elseif ($regMemStatus === false) {
             $_SESSION['regMemStatus'] = 0;
         }
-        header("Location: ../../admin/member/registerMember.php");
+        header("Location: ../../admin/registerMember.php");
     }
 } else {
     header("Location: ../../index.php");

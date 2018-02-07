@@ -9,12 +9,11 @@ class PasswordHandler {
 
     //Method to perform password hashing
     public function hashPass($pass) {
-        $hashedPass = password_hash(hash("SHA512", $pass, true), PASSWORD_BCRYPT);
-        return $hashedPass;
+        return password_hash(hash("SHA512", $pass, true), PASSWORD_BCRYPT);
     }
 
     //Method to verify the password
     public function verifyPass($pass, $hashedPass) {
-        return $validPass = password_verify(hash("SHA512", $pass, true), $hashedPass);
+        return password_verify(hash("SHA512", $pass, true), $hashedPass);
     }
 }

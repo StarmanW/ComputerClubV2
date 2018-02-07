@@ -1,6 +1,6 @@
 <?php
     $pageTitle = "Register Member";
-    include "../../templates/header.php";
+    include "../templates/header.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
     $programmeService = new ProgrammeService();
     $programmes = $programmeService->getAllProgrammes();
@@ -14,7 +14,7 @@
             <hr style="border-top:1px solid gray;" />
             <div class="col-lg-12 well">
                 <div class="row">
-                    <form method="post" action="../../includes/controller/registerMember.php">
+                    <form method="post" action="../includes/controller/registerMember.php">
                         <p style="color:red; float: left;">"*" Required fields</p>
                         <br />
                         <br />
@@ -121,7 +121,7 @@
         </div>
     </div>
 </section>
-<script src="../../assets/js/upperCase.js"></script>
+<script src="../assets/js/upperCase.js"></script>
 <?php
     if (isset($_SESSION['regMemStatus']) and $_SESSION['regMemStatus'] === 1) {
         echo "<script>" . "window.alert('New Member successfully added!')" . "</script>";
@@ -134,5 +134,5 @@
     unset($_SESSION['regMemData']);
     unset($_SESSION['emptyMemMsg']);
     unset($_SESSION['invalidMemMsg']);
-    include "../../templates/footer.php";
+    include "../templates/footer.php";
 ?>
