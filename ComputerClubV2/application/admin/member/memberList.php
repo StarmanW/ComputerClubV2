@@ -59,8 +59,8 @@
                                 <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getProgramme()->getProgID(); ?></td>
                                 <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getFeeStatus(); ?></td>
                                 <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                    <a href="updateMember.php?studID=<?php $members[$i]->getMemberID() ?>"><button type="button" name="edit" class="edit-button"><img src="../../assets/images/edit.png" /></button></a>
-                                    <a href="deleteMember.php?studID=<?php $members[$i]->getMemberID() ?>"><button type="button" name="delete" class="delete-button"><img src="../../assets/images/delete.png" /></button></a>
+                                    <a href="updateMember.php?studID=<?php echo $members[$i]->getMemberID() ?>"><button type="button" name="edit" class="edit-button"><img src="../../assets/images/edit.png" /></button></a>
+                                    <a href="deleteMember.php?studID=<?php echo $members[$i]->getMemberID() ?>"><button type="button" name="delete" class="delete-button"><img src="../../assets/images/delete.png" /></button></a>
                                 </td>
                             </tr>
                         <?php endfor; ?>

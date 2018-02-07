@@ -6,16 +6,16 @@
  */
 
 require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/MemberService.php';
-include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
 require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/PasswordHandler.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/utility/memberUtil.php';
-//include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Member.php';
 
+//TODO - Add login session check once finished
 if (isset($_POST['submitRegMem'])) {
     session_start();
 
     //Get all data and set it into a session
-    $_SESSION['regMemberData'] = array(
+    $_SESSION['regMemData'] = array(
         'fName' => $_POST['fName'],
         'lName' => $_POST['lName'],
         'icNum' => $_POST['icNum'],
@@ -29,8 +29,8 @@ if (isset($_POST['submitRegMem'])) {
         'position' => $_POST['position']
     );
 
-    $nonEmptyData = validateEmptyData($_SESSION['regMemberData']);
-    $validData = validateData($_SESSION['regMemberData']);
+    $nonEmptyData = validateEmptyData($_SESSION['regMemData'], "registerMember");
+    $validData = validateData($_SESSION['regMemData'], "registerMember");
 
     if ($nonEmptyData === true and $validData === true) {
         //Creating objects requried for operation
@@ -40,25 +40,29 @@ if (isset($_POST['submitRegMem'])) {
         $passHandler = new PasswordHandler();
 
         //Set new member data
-        $member->setFirstName($_SESSION['regMemberData']['fName']);
-        $member->setLastName($_SESSION['regMemberData']['lName']);
-        $member->setMemberIC($_SESSION['regMemberData']['icNum']);
-        $member->setMemberID($_SESSION['regMemberData']['memID']);
-        $member->setMemberContact($_SESSION['regMemberData']['contactNo']);
-        $member->setMemberEmail($_SESSION['regMemberData']['email']);
-        $member->setAcademicYear($_SESSION['regMemberData']['academicYear']);
-        $member->setProgramme($programmeService->getProgrammeByID($_SESSION['regMemberData']['progID']));
-        $member->setGender($_SESSION['regMemberData']['gender']);
-        $member->setFeeStatus($_SESSION['regMemberData']['memFeeStats']);
-        $member->setPosition($_SESSION['regMemberData']['position']);
-        $member->setPassword($passHandler->hashPass($_SESSION['regMemberData']['icNum']));
+        $member->setFirstName($_SESSION['regMemData']['fName']);
+        $member->setLastName($_SESSION['regMemData']['lName']);
+        $member->setMemberIC($_SESSION['regMemData']['icNum']);
+        $member->setMemberID($_SESSION['regMemData']['memID']);
+        $member->setMemberContact($_SESSION['regMemData']['contactNo']);
+        $member->setMemberEmail($_SESSION['regMemData']['email']);
+        $member->setAcademicYear($_SESSION['regMemData']['academicYear']);
+        $member->setProgramme($programmeService->getProgrammeByID($_SESSION['regMemData']['progID']));
+        $member->setGender($_SESSION['regMemData']['gender']);
+        $member->setFeeStatus($_SESSION['regMemData']['memFeeStats']);
+        $member->setPosition($_SESSION['regMemData']['position']);
+        $member->setPassword($passHandler->hashPass($_SESSION['regMemData']['icNum']));
 
         //Persist new member object
-        if ($memberService->createMember($member) === true) {
-            header("Location: ../../admin/member/registerMember.php?success");
-        } else {
-            header("Location: ../../admin/member/registerMember.php?error");
+        $regMemStatus = $memberService->createMember($member);
+        if ($regMemStatus === true) {
+            $_SESSION['regMemStatus'] = 1;
+        } elseif ($regMemStatus === -1) {
+            $_SESSION['regMemStatus'] = -1;
+        } elseif ($regMemStatus === false) {
+            $_SESSION['regMemStatus'] = 0;
         }
+        header("Location: ../../admin/member/registerMember.php");
     }
 } else {
     header("Location: ../../index.php");

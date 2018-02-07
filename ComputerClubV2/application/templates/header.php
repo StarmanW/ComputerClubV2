@@ -1,4 +1,8 @@
-<?php //include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/sessionCheck.php'; ?>
+<?php
+    //TODO - Remove once finished
+    //include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/sessionCheck.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +19,6 @@
         } ?>
     </title>
 
-    <!-- TODO FIX WEIRD IMPORT DIRECTORY -->
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/tether/tether.min.css">
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/bootstrap/css/bootstrap.min.css">
@@ -26,16 +29,14 @@
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/datatables/data-tables.bootstrap4.min.css">
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/theme/css/style.css">
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/mobirise/css/mbr-additional.css" type="text/css">
-    <?php if (preg_match("/^(eventInfo|registerMember|registerEvent|registerCollaborator|registerSponsoredItem).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/registerForm.css" type="text/css">
-    <?php elseif (preg_match("/^index.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
-    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/login.css" type="text/css">
-    <?php elseif (preg_match("/^homepage.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/hoverImage.css" type="text/css">
-    <?php elseif (preg_match("/^(collaboratorList|sponsoredItemList|memberList|eventList|listEventCollaborators|listEventParticipants|listEventSponsoredItems).php$/", basename($_SERVER['SCRIPT_NAME']))):?>
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/editDeleteBtn.css" type="text/css">
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/registerForm.css" type="text/css">
+    <?php if (preg_match("/^index.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
+    <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/login.css" type="text/css">
+    <?php elseif (preg_match("/^(list.*|.*List)\.php$/", basename($_SERVER['SCRIPT_NAME']))):?>
     <link rel="stylesheet" href="/ComputerClubV2/application/assets/css/lists.css" type="text/css">
-    <?php endif; ?>
+    <?php endif;?>
 </head>
 
 <body>

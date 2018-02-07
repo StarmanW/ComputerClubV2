@@ -27,6 +27,7 @@ class MemberService extends DB {
     //Method to retrieve all Members
     public function getAllMembers() {
         $members = $this->em->getRepository(Entity\Member::class)->findAll();
+        $this->em->clear();
         return $members === null ? 0 : $members;
     }
 

@@ -6,8 +6,9 @@
  */
 
 //Function to validate non-empty data
-function validateEmptyData($registerMemData) {
+function validateEmptyData($registerMemData, $pageURL) {
     $nonEmptyData = false;
+    $emptyMsg = true;
 
     $emptyDataErrMsg = array(
         'fName' => "Please enter the first name fields.",
@@ -24,48 +25,43 @@ function validateEmptyData($registerMemData) {
     );
 
     if ($registerMemData['fName'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['fName'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['fName'];
     } else if ($registerMemData['lName'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['lName'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['lName'];
     } else if ($registerMemData['icNum'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['icNum'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['icNum'];
     } else if ($registerMemData['memID'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['memID'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['memID'];
     } else if ($registerMemData['contactNo'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['contactNo'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['contactNo'];
     } else if ($registerMemData['email'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['email'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['email'];
     } else if ($registerMemData['progID'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['progID'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['progID'];
     } else if ($registerMemData['academicYear'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['academicYear'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['academicYear'];
     } else if ($registerMemData['gender'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['gender'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['gender'];
     } else if ($registerMemData['memFeeStats'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['memFeeStats'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['memFeeStats'];
     } else if ($registerMemData['position'] === '') {
-        $_SESSION['emptyRegMemMsg'] = $emptyDataErrMsg['position'];
-        header('Location: ../../admin/member/registerMember.php?empty');
+        $_SESSION['emptyMemMsg'] = $emptyDataErrMsg['position'];
     } else {
+        $emptyMsg = false;
         $nonEmptyData = true;
+    }
+
+    if ($nonEmptyData === false and $emptyMsg === true) {
+        header('Location: ../../admin/member/' . $pageURL . '.php');
     }
 
     return $nonEmptyData;
 }
 
 //Function to validate data
-function validateData($registerMemData) {
+function validateData($registerMemData, $pageURL) {
     $validData = false;
+    $invalidMsg = true;
 
     $invalidDataErrMsg = array(
         'fName' => "Invalid first name format, please ensure the correct format is entered.",
@@ -82,40 +78,34 @@ function validateData($registerMemData) {
     );
 
     if (!preg_match("/^[a-zA-z\-@ ]{2,}$/", $registerMemData['fName'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['fName'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['fName'];
     } else if (!preg_match("/^[a-zA-z\-@ ]{2,}$/", $registerMemData['lName'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['lName'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['lName'];
     } else if (!preg_match("/^\d{12}$/", $registerMemData['icNum'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['icNum'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['icNum'];
     } else if (!preg_match("/^\d{2}[A-Z]{3}\d{5}$/", $registerMemData['memID'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['memID'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['memID'];
     } else if (!preg_match("/([0-9]|[0-9\-]){3,20}/", $registerMemData['contactNo'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['contactNo'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['contactNo'];
     } else if (!preg_match("/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/", $registerMemData['email'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['email'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['email'];
     } else if (!preg_match("/^(DIA|DHM|DBU|DMK|DAC)$/", $registerMemData['progID'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['progID'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['progID'];
     } else if (!preg_match("/^20\d{2}\/20\d{2}$/", $registerMemData['academicYear'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['academicYear'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['academicYear'];
     } else if (!preg_match("/^(M|F)$/", $registerMemData['gender'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['gender'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['gender'];
     } else if (!preg_match("/^(true|false)$/", $registerMemData['memFeeStats'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['memFeeStats'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['memFeeStats'];
     } else if (!preg_match("/^[1-5]{1}$/", $registerMemData['position'])) {
-        $_SESSION['invalidRegMemMsg'] = $invalidDataErrMsg['position'];
-        header('Location: ../../admin/member/registerMember.php?invalid');
+        $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['position'];
     } else {
+        $invalidMsg = false;
         $validData = true;
+    }
+
+    if ($validData === false and $invalidMsg === true) {
+        header('Location: ../../admin/member/' . $pageURL . '.php');
     }
 
     return $validData;
