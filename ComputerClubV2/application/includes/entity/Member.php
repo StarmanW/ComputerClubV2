@@ -17,12 +17,12 @@ class Member {
 
     /**
      * @ORM\Id()
-     * @ORM\OneToMany(targetEntity="Entity\EventMember", mappedBy="member")
+     * @ORM\OneToMany(targetEntity="Entity\EventMember", mappedBy="member", cascade={"remove"})
      * @ORM\Column(type="string", name="MEMBERID", nullable=false, length=10)
      */
     private $memberID;
     /**
-     * @ORM\ManyToOne(targetEntity="Entity\Programme", inversedBy="progID")
+     * @ORM\ManyToOne(targetEntity="Entity\Programme", inversedBy="progID", cascade={"refresh"})
      * @ORM\JoinColumn(name="PROGID", referencedColumnName="PROGID")
      */
     private $programme;
@@ -89,6 +89,10 @@ class Member {
 
     public function getLastName() {
         return $this->lastName;
+    }
+
+    public function getFullName() {
+        return $this->firstName . ' ' . $this->lastName;
     }
 
     public function getMemberEmail() {

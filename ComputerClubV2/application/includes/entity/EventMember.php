@@ -27,7 +27,7 @@ class EventMember {
     private $event;
     /**
      * @ORM\ManyToOne(targetEntity="Entity\Member", inversedBy="memberID")
-     * @ORM\JoinColumn(name="MEMBERID", referencedColumnName="MEMBERID")
+     * @ORM\JoinColumn(name="MEMBERID", referencedColumnName="MEMBERID", onDelete="CASCADE")
      */
     private $member;
 

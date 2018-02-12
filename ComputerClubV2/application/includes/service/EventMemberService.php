@@ -20,9 +20,14 @@ class EventMemberService extends DB {
         parent::__construct();
     }
 
-    //Method to retrieve a specific event collaborator by event ID
-    public function getMembersByEventID($eventID) {
-        $eventCollab = $this->em->getRepository(Entity\EventMember::class)->findBy(array('event' => $eventID));
+    //Method to retrieve a specific event member by event ID
+    public function getRecords($colField, $value) {
+        try {
+            $eventCollab = $this->em->getRepository(Entity\EventMember::class)->findBy(array($colField => $value));
+            $this->em->flush();
+        } catch (Exception $e) {
+            $this->em->rollback();
+        }
         return $eventCollab === null ? 0 : $eventCollab;
     }
 
@@ -37,7 +42,6 @@ class EventMemberService extends DB {
         $successInsert = false;
 
         try {
-            $this->em->beginTransaction();
             $this->em->persist($eventCollab);
             $this->em->commit();
             $this->em->flush();
@@ -53,6 +57,7 @@ class EventMemberService extends DB {
         $successUpdate = false;
 
         try {
+            $this->em->clear(\Entity\EventMember::class);
             $this->em->beginTransaction();
             $this->em->merge($eventCollab);
             $this->em->commit();
@@ -64,13 +69,13 @@ class EventMemberService extends DB {
         return $successUpdate;
     }
 
-    //Method to delete event collaborator record
-    public function deleteEventMember($eventCollab) {
+    //Method to delete event member record
+    public function deleteEventMember($eventMember) {
         $successDelete = false;
 
         try {
             $this->em->beginTransaction();
-            $this->em->remove($eventCollab);
+            $this->em->remove($eventMember);
             $this->em->commit();
             $this->em->flush();
             $successDelete = true;

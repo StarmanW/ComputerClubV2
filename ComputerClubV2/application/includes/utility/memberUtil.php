@@ -87,7 +87,7 @@ function validateData($registerMemData, $pageURL) {
         $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['memID'];
     } else if (!preg_match("/([0-9]|[0-9\-]){3,20}/", $registerMemData['contactNo'])) {
         $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['contactNo'];
-    } else if (!preg_match("/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/", $registerMemData['email'])) {
+    } else if (!preg_match("/[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/", $registerMemData['email'])) {
         $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['email'];
     } else if (!preg_match("/^(DIA|DHM|DBU|DMK|DAC)$/", $registerMemData['progID'])) {
         $_SESSION['invalidMemMsg'] = $invalidDataErrMsg['progID'];

@@ -51,7 +51,7 @@ $members = $members->getAllMembers();
                         <?php
                         for ($i = 0; $i < sizeof($members); $i++):?>
                             <tr>
-                                <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getFirstName() . ' ' . $members[$i]->getLastName(); ?></td>
+                                <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getFullName(); ?></td>
                                 <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getMemberID(); ?></td>
                                 <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getPositionString(); ?></td>
                                 <td class="body-item mbr-fonts-style display-7"><?php echo $members[$i]->getGender(); ?></td>

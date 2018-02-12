@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Register Member";
+    $pageTitle = "Update Member " . $_GET['studID'];
     include "../templates/header.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/MemberService.php";
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label><span style="color:red;">*</span>Email</label>
-                                    <input type="email" name="email" value="<?php echo $member->getMemberEmail();?>" placeholder="email@hotmail.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
+                                    <input type="email" name="email" value="<?php echo $member->getMemberEmail();?>" placeholder="email@hotmail.com" class="form-control" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
                                 </div>
                             </div>
                             <div class="row">

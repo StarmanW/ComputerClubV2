@@ -17,13 +17,24 @@ class ProgrammeService extends DB {
 
     //Method to retrieve a specific programme
     public function getProgrammeByID($progID) {
-        $programme = $this->em->getRepository(Entity\Programme::class)->findOneBy(array('progID' => $progID));
+        try {
+            $programme = $this->em->getRepository(Entity\Programme::class)->findOneBy(array('progID' => $progID));
+            $this->em->flush();
+        } catch (\Doctrine\ORM\OptimisticLockException $e) {
+            $this->em->rollback();
+        }
         return $programme === null ? 0 : $programme;
     }
 
     //Method to retrieve all Programmes
     public function getAllProgrammes() {
-        return $this->em->getRepository(Entity\Programme::class)->findAll();
+        try {
+            $programes = $this->em->getRepository(Entity\Programme::class)->findAll();
+            $this->em->flush();
+        } catch (\Doctrine\ORM\OptimisticLockException $e) {
+            $this->em->rollback();
+        }
+        return $programes === null ? 0 : $programes;
     }
 
     //Method to create new programme record
