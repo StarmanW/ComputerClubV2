@@ -14,6 +14,6 @@ class PasswordHandler {
 
     //Method to verify the password
     public function verifyPass($pass, $hashedPass) {
-        return password_verify(hash("SHA512", $pass, true), $hashedPass);
+        return password_verify(hash("SHA512", $pass, true), base64_decode($hashedPass));
     }
 }

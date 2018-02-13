@@ -17,12 +17,12 @@ class Member {
 
     /**
      * @ORM\Id()
-     * @ORM\OneToMany(targetEntity="Entity\EventMember", mappedBy="member", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Entity\EventMember", mappedBy="member")
      * @ORM\Column(type="string", name="MEMBERID", nullable=false, length=10)
      */
     private $memberID;
     /**
-     * @ORM\ManyToOne(targetEntity="Entity\Programme", inversedBy="progID", cascade={"refresh"})
+     * @ORM\ManyToOne(targetEntity="Entity\Programme", inversedBy="progID")
      * @ORM\JoinColumn(name="PROGID", referencedColumnName="PROGID")
      */
     private $programme;

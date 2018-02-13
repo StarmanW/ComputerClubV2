@@ -38,7 +38,6 @@ if (isset($_POST['submitUpdtMem'])) {
         $memberService = new MemberService();
         $programmeService = new ProgrammeService();
         $member = $memberService->getMemberByID($_SESSION['updtMemData']['memID']);
-        $passHandler = new PasswordHandler();
 
         //Update member data
         $member->setFirstName($_SESSION['updtMemData']['fName']);

@@ -53,7 +53,7 @@ class MemberService extends DB {
                 $this->em->commit();
                 $this->em->flush();
                 $successInsert = true;
-            } catch (\Doctrine\ORM\OptimisticLockException $e) {
+            } catch (Exception $e) {
                 $this->em->rollback();
             }
         }
@@ -96,7 +96,7 @@ class MemberService extends DB {
                 $this->em->commit();
                 $this->em->flush();
                 $successDelete = true;
-            } catch (\Doctrine\ORM\OptimisticLockException $e) {
+            } catch (Exception $e) {
                 $this->em->rollback();
             }
         }

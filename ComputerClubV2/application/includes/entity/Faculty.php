@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Faculty {
     /**
      * @ORM\Id()
-     * @ORM\OneToMany(targetEntity="Entity\Programme", mappedBy="faculty", cascade={"refresh"})
+     * @ORM\OneToMany(targetEntity="Entity\Programme", mappedBy="faculty")
      * @ORM\Column(type="string", name="FACULTYID", nullable=false, length=4)
      */
     private $facultyID;

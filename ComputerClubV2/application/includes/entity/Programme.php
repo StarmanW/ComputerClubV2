@@ -17,7 +17,7 @@ class Programme {
 
     /**
      * @ORM\Id()
-     * @ORM\OneToMany(targetEntity="Entity\Member", mappedBy="programme", cascade={"refresh"})
+     * @ORM\OneToMany(targetEntity="Entity\Member", mappedBy="programme")
      * @ORM\Column(type="string", name="PROGID", nullable=false, length=3)
      */
     private $progID;
@@ -26,7 +26,7 @@ class Programme {
      */
     private $progName;
     /**
-     * @ORM\ManyToOne(targetEntity="Entity\Faculty", inversedBy="facultyID", cascade={"refresh"})
+     * @ORM\ManyToOne(targetEntity="Entity\Faculty", inversedBy="facultyID")
      * @ORM\JoinColumn(name="FACULTYID", referencedColumnName="FACULTYID")
      */
     private $faculty;
