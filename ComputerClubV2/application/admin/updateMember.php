@@ -1,8 +1,8 @@
 <?php
     $pageTitle = "Update Member " . $_GET['studID'];
     include "../templates/header.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/MemberService.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/service/ProgrammeService.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/service/MemberService.php";
     $programmeService = new ProgrammeService();
     $memberService = new MemberService();
     $programmes = $programmeService->getAllProgrammes();

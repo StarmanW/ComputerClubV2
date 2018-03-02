@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "Member List";
 include "../templates/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/MemberService.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/includes/service/MemberService.php";
 $members = new MemberService();
 $members = $members->getAllMembers();
 ?>
@@ -32,7 +32,7 @@ $members = $members->getAllMembers();
                             <th class="head-item mbr-fonts-style display-7" colspan="8">
                                 <div style="text-align: center;">
                                     <a href="registerMember.php"><img src="../assets/images/plus-square.svg" width="40px"/><span
-                                            class="addNewRecordTxt">&nbsp;Add New Member</span></a>
+                                                class="addNewRecordTxt">&nbsp;Add New Member</span></a>
                                 </div>
                             </th>
                         </tr>

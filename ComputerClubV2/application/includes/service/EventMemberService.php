@@ -7,11 +7,11 @@
 
 
 require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Programme.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Member.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Faculty.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Event.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventMember.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Programme.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Member.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Faculty.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Event.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/EventMember.php';
 
 class EventMemberService extends DB {
 

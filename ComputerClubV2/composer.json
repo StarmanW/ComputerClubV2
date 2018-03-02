@@ -5,11 +5,11 @@
   "license": "proprietary",
   "authors": [
     {
-      "name": "StarmanW",
-      "email": ""
-    }],
-  "require":
-  {
-    "doctrine/orm": "2.5.14"
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "doctrine/orm": "v2.5.14"
   }
 }

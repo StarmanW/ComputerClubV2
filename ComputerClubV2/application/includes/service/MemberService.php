@@ -6,9 +6,9 @@
  */
 
 require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Member.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Faculty.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Programme.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Member.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Faculty.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Programme.php';
 require_once 'EventMemberService.php';
 
 class MemberService extends DB {

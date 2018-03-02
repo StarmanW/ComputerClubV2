@@ -6,10 +6,10 @@
  */
 
 require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Event.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Item.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Collaborator.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventItem.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Event.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Item.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Collaborator.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/EventItem.php';
 
 class EventItemService extends DB {
 

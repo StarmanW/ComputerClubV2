@@ -5,10 +5,10 @@
  * Time: 9:21 AM
  */
 
-require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/MemberService.php';
-require $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
-require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/PasswordHandler.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/utility/memberUtil.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/service/MemberService.php';
+require $_SERVER['DOCUMENT_ROOT'] . "/includes/service/ProgrammeService.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/service/PasswordHandler.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/utility/memberUtil.php';
 
 //TODO - Add login session check once finished
 if (isset($_POST['submitUpdtMem'])) {

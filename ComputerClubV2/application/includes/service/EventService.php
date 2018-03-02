@@ -6,10 +6,10 @@
  */
 
 require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Event.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventItem.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventMember.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/EventCollaborator.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/Event.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/EventItem.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/EventMember.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/entity/EventCollaborator.php';
 
 class EventService extends DB {
 
@@ -34,7 +34,7 @@ class EventService extends DB {
     public function createEvent($event) {
         $successInsert = false;
 
-        if ($this->getEvent($event->getEventID()) !== 0) {
+        if ($this->getEventByID($event->getEventID()) !== 0) {
             $successInsert = -1;        //-1 for duplicated record
         } else {
             try {
@@ -54,7 +54,7 @@ class EventService extends DB {
     public function updateEvent($event) {
         $successUpdate = false;
 
-        if ($this->getEvent($event->getEventID())) {
+        if ($this->getEventByID($event->getEventID())) {
             try {
                 $this->em->beginTransaction();
                 $this->em->merge($event);

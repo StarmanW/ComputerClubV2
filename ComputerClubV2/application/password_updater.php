@@ -5,8 +5,8 @@
  * Time: 1:23 AM
  */
 
-include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/MemberService.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/PasswordHandler.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/service/MemberService.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/service/PasswordHandler.php';
 
 $memberService = new MemberService();
 $passHandler = new PasswordHandler();

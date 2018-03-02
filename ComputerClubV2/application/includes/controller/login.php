@@ -5,8 +5,8 @@
  * Time: 9:13 PM
  */
 
-include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/MemberService.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/PasswordHandler.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/service/MemberService.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/service/PasswordHandler.php';
 
 if (isset($_POST['submitLgn']) and isset($_POST['password']) and isset($_POST['userID'])) {
     //Validate empty fields

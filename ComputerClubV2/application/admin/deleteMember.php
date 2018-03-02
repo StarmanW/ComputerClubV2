@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "Delete Member " . $_GET['studID'];
 include "../templates/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/MemberService.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/includes/service/MemberService.php";
 $members = new MemberService();
 $members = $members->getMemberByID($_GET['studID']);
 $_SESSION['delStudID'] = $_GET['studID'];

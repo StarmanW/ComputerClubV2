@@ -5,7 +5,7 @@
  * Time: 9:30 PM
  */
 
-require $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/service/MemberService.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/service/MemberService.php';
 
 //TODO - Add login session check once finished
 if (isset($_POST['deleteMem'])) {

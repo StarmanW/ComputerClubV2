@@ -3,8 +3,8 @@
         <div class="media-container-row content text-white">
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
-                    <a href="<?php if (basename($_SERVER["SCRIPT_NAME"]) === 'index.php') echo "index.php"; else echo "homepage.php";?>"><img src="/ComputerClubV2/application/assets/images/logo-2-3508x2480.jpg" alt="Computer Club Logo" title=""
-                                                media-simple="true"></a>
+                    <a href="<?php if (basename($_SERVER["SCRIPT_NAME"]) === 'index.php') echo "index.php"; else echo "homepage.php";?>"><img src="../assets/images/logo-2-3508x2480.jpg" alt="Computer Club Logo" title=""
+                                                                                                                                              media-simple="true"></a>
                 </div>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
@@ -57,20 +57,20 @@
         </div>
     </div>
 </section>
-<script src="/ComputerClubV2/application/assets/web/assets/jquery/jquery.min.js"></script>
-<script src="/ComputerClubV2/application/assets/popper/popper.min.js"></script>
-<script src="/ComputerClubV2/application/assets/tether/tether.min.js"></script>
-<script src="/ComputerClubV2/application/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="/ComputerClubV2/application/assets/touchswipe/jquery.touch-swipe.min.js"></script>
-<script src="/ComputerClubV2/application/assets/smoothscroll/smooth-scroll.js"></script>
-<script src="/ComputerClubV2/application/assets/dropdown/js/script.min.js"></script>
-<script src="/ComputerClubV2/application/assets/theme/js/script.js"></script>
-<script src="/ComputerClubV2/application/assets/scrolltotop/scrolltotop.js"></script>
-<script src="/ComputerClubV2/application/assets/datatables/jquery.data-tables.min.js"></script>
-<script src="/ComputerClubV2/application/assets/datatables/data-tables.bootstrap4.min.js"></script>
+<script src="../assets/web/assets/jquery/jquery.min.js"></script>
+<script src="../assets/popper/popper.min.js"></script>
+<script src="../assets/tether/tether.min.js"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/touchswipe/jquery.touch-swipe.min.js"></script>
+<script src="../assets/smoothscroll/smooth-scroll.js"></script>
+<script src="../assets/dropdown/js/script.min.js"></script>
+<script src="../assets/theme/js/script.js"></script>
+<script src="../assets/scrolltotop/scrolltotop.js"></script>
+<script src="../assets/datatables/jquery.data-tables.min.js"></script>
+<script src="../assets/datatables/data-tables.bootstrap4.min.js"></script>
 <?php if (basename($_SERVER['SCRIPT_NAME']) === 'index.php'):?>
-<script src="/ComputerClubV2/application/assets/playervimeo/vimeo_player.js"></script>
-<script src="/ComputerClubV2/application/assets/parallax/jarallax.min.js"></script>
+    <script src="../assets/playervimeo/vimeo_player.js"></script>
+    <script src="../assets/parallax/jarallax.min.js"></script>
 <?php endif;?>
 <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
 </body>

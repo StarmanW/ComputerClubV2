@@ -1,7 +1,7 @@
 <?php
     $pageTitle = "Register Member";
     include "../templates/header.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/ProgrammeService.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/includes/service/ProgrammeService.php";
     $programmeService = new ProgrammeService();
     $programmes = $programmeService->getAllProgrammes();
 ?>
@@ -14,7 +14,7 @@
             <hr style="border-top:1px solid gray;" />
             <div class="col-lg-12 well">
                 <div class="row">
-                    <form method="post" action="../includes/controller/registerMember.php">
+                    <form method="post" action="/
                         <p style="color:red; float: left;">"*" Required fields</p>
                         <br />
                         <br />
@@ -122,13 +122,35 @@
     </div>
 </section>
 <script src="../assets/js/upperCase.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css" />
+<link rel="stylesheet" href="../assets/css/notify.css" />
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+
 <?php
     if (isset($_SESSION['regMemStatus']) and $_SESSION['regMemStatus'] === 1) {
-        echo "<script>" . "window.alert('New Member successfully added!')" . "</script>";
+        echo "<script>" . "alertify.alert('New member has been successfully added!').setting({
+        'transition': 'zoom',
+        'movable': false,
+        'modal': true,
+        'label': \"OK\",
+    }).setHeader('New Member Successfully Added!').show();" . "</script>";
     } elseif (isset($_SESSION['regMemStatus']) and $_SESSION['regMemStatus'] === -1) {
-        echo "<script>" . "window.alert('Duplicated records found, please ensure the new member record does not exist in the member list.')" . "</script>";
+        echo "<script>" . "alertify.alert('Duplicated records found, please ensure the new member record does not exist in the member list.').setting({
+        'transition': 'zoom',
+        'movable': false,
+        'modal': true,
+        'label': \"OK\",
+    }).setHeader('Duplicated Member').show();" . "</script>";
     } else if (isset($_SESSION['regMemStatus']) and $_SESSION['regMemStatus'] === 0) {
-        echo "<script>" . "window.alert('Oh no! An error has occurred, please contact the system administrator.')" . "</script>";
+        echo "<script>" . "alertify.alert('Oh no! An error has occurred, please contact the system administrator.').setting({
+        'transition': 'zoom',
+        'movable': false,
+        'modal': true,
+        'label': \"OK\",
+    }).setHeader('An Error Occurred').show();" . "</script>";
     }
     unset($_SESSION['regMemStatus']);
     unset($_SESSION['regMemData']);

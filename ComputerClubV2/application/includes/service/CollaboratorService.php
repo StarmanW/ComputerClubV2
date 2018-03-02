@@ -6,7 +6,7 @@
  */
 
 require_once 'DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ComputerClubV2/application/includes/entity/Collaborator.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/application/includes/entity/Collaborator.php';
 
 class CollaboratorService extends DB {
 

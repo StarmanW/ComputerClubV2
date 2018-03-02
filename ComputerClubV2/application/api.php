@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
-include $_SERVER['DOCUMENT_ROOT'] . "/ComputerClubV2/application/includes/service/MemberService.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/application/includes/service/MemberService.php";
 $members = new MemberService();
 $members = $members->getAllMembers();
 $membersArr = array();
