@@ -1,4 +1,6 @@
-# Computer Club Project V2
+# Computer Club Project V2 (Archived)
+### * This repo has been archived for future reference.
+
 This is an improved version of "ComputerClub Project" which were developed in Java. For this version 2, it is developed in PHP and uses Object Relation Mapping (ORM) libraries from Doctrine 2.
 
 Main application files can be found in "application" folder.
